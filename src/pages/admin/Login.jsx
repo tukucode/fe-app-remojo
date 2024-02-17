@@ -2,7 +2,13 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import FormAuth from "../../components/FormAuth";
+import axios from "axios";
+import useLoading from "../../hooks/useLoading";
+
 import { Form, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
   const schema = Yup.object({
@@ -28,8 +34,35 @@ export default function AdminLogin() {
     onSubmit: onSubmitForm,
   });
 
+  const { showLoading, hideLoading } = useLoading();
+  const dispatch = useDispatch();
+  const navigateTo = useNavigate();
+
   function onSubmitForm(values) {
-    console.log("INI", values);
+    showLoading();
+
+    axios
+      .post("https://be-app-remojo.vercel.app/api/v1/user/login", values)
+      .then((response) => {
+        let { token } = response.data.data;
+
+        // SET TOKEN TO STORE USER
+        dispatch({ type: "SET_TOKEN", value: token });
+
+        // SET TOKEN TO LOCAL STORAGE
+        localStorage.setItem("token", token);
+
+        toast.success("Login success");
+        navigateTo("/admin");
+      })
+      .catch((error) => {
+        let errors = error.response.data.data.errors;
+        let { message } = errors[0];
+        toast.error(message);
+      })
+      .finally(() => {
+        hideLoading();
+      });
   }
 
   return (
@@ -51,6 +84,7 @@ export default function AdminLogin() {
               isInvalid={!!Formik.errors.email}
               placeholder="Email"
               className="rounded-0"
+              autoComplete="off"
             />
             <Form.Control.Feedback type="invalid">
               {Formik.errors.email}
@@ -66,6 +100,7 @@ export default function AdminLogin() {
               isInvalid={!!Formik.errors.password}
               placeholder="Password"
               className="rounded-0"
+              autoComplete="off"
             />
             <Form.Control.Feedback type="invalid">
               {Formik.errors.password}

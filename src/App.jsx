@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // LAYOUTS
 import LayoutDashboard from "./layouts/Dashboard";
 import LayoutLanding from "./layouts/Landing";
+import LayoutDefault from "./layouts/Default";
 
 // PAGES ADMIN
 import Admin from "./pages/admin/Index";
@@ -25,11 +26,12 @@ export default function App() {
           <Route index path="/" Component={Home} />
         </Route>
 
-        {/* AUTH */}
-        <Route path="/admin/login" Component={AdminLogin} />
+        {/* DEFAULT */}
+        <Route Component={LayoutDefault}>
+          <Route path="/admin/login" Component={AdminLogin} />
 
-        {/* PAGE NOT FOUND */}
-        <Route path="/*" element={<h1>Page Not Found</h1>} />
+          <Route path="/*" element={<h1>Page Not Found</h1>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
