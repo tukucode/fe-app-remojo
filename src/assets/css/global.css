@@ -138,4 +138,15 @@ footer#footer--rental--mobil {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* SMALL */
+@media (max-width: 575.98px) {
+  footer#footer--rental--mobil {
+    height: 3rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
 }
