@@ -53,7 +53,7 @@ export default function AdminLogin() {
         localStorage.setItem("token", token);
 
         toast.success("Login success");
-        navigateTo("/admin");
+        navigateTo("/admin/data-mobil");
       })
       .catch((error) => {
         let errors = error.response.data.data.errors;
