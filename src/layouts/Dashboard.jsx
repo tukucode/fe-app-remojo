@@ -3,6 +3,8 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink, Outlet, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import Footer from "../components/Footer";
+
 export default function LayoutDashboard() {
   const [show, setShow] = useState(false);
   function onShowMenu() {
@@ -69,7 +71,11 @@ export default function LayoutDashboard() {
         </Container>
       </Navbar>
 
-      <Outlet key="layout-dashboard" />
+      <Container className="my-5">
+        <Outlet key="layout-dashboard" />
+      </Container>
+
+      <Footer />
     </>
   );
 }
