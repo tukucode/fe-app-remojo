@@ -1,14 +1,13 @@
-import { useFormik } from "formik";
+import FormAuth from "../../components/FormAuth";
+import useLoading from "../../hooks/useLoading";
+import axios from "axios";
 import * as Yup from "yup";
 
-import FormAuth from "../../components/FormAuth";
-import axios from "axios";
-import useLoading from "../../hooks/useLoading";
-
+import { useFormik } from "formik";
 import { Form, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export default function AdminLogin() {
   const schema = Yup.object({
@@ -64,6 +63,9 @@ export default function AdminLogin() {
         hideLoading();
       });
   }
+
+  const { token } = useSelector((store) => store.user);
+  if (token) return <Navigate to="/admin/data-mobil" replace />;
 
   return (
     <main
