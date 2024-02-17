@@ -4,9 +4,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LayoutDashboard from "./layouts/Dashboard";
 import LayoutLanding from "./layouts/Landing";
 
-// PAGES
-import Home from "./pages/Index";
+// PAGES ADMIN
 import Admin from "./pages/admin/Index";
+import AdminLogin from "./pages/admin/Login";
+
+// PAGES CUSTOMER
+import Home from "./pages/Index";
 
 export default function App() {
   return (
@@ -21,6 +24,9 @@ export default function App() {
         <Route Component={LayoutLanding}>
           <Route index path="/" Component={Home} />
         </Route>
+
+        {/* AUTH */}
+        <Route path="/admin/login" Component={AdminLogin} />
 
         {/* PAGE NOT FOUND */}
         <Route path="/*" element={<h1>Page Not Found</h1>} />
