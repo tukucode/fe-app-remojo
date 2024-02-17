@@ -6,8 +6,10 @@ import LayoutLanding from "./layouts/Landing";
 import LayoutDefault from "./layouts/Default";
 
 // PAGES ADMIN
-import Admin from "./pages/admin/Index";
 import AdminLogin from "./pages/admin/Login";
+import DataMobil from "./pages/admin/data-mobil/Index";
+import DataTransaction from "./pages/admin/data-transaksi/Index";
+import DataPengguna from "./pages/admin/data-pengguna/Index";
 
 // PAGES CUSTOMER
 import Home from "./pages/Index";
@@ -18,7 +20,13 @@ export default function App() {
       <Routes>
         {/* DASHBOARD */}
         <Route Component={LayoutDashboard}>
-          <Route index path="/admin" element={<Admin />} />
+          <Route index path="/admin/data-mobil" Component={DataMobil} />
+          <Route
+            index
+            path="/admin/data-transaksi"
+            Component={DataTransaction}
+          />
+          <Route index path="/admin/data-pengguna" Component={DataPengguna} />
         </Route>
 
         {/* LANDING */}
