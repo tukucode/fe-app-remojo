@@ -38,10 +38,11 @@ export default function AdminLogin() {
   const navigateTo = useNavigate();
 
   function onSubmitForm(values) {
+    let url = `${import.meta.env.VITE_BASE_API_URL}/api/v1/user/login`;
     showLoading();
 
     axios
-      .post("https://be-app-remojo.vercel.app/api/v1/user/login", values)
+      .post(url, values)
       .then((response) => {
         let { token } = response.data.data;
 
@@ -55,9 +56,16 @@ export default function AdminLogin() {
         navigateTo("/admin/data-mobil");
       })
       .catch((error) => {
-        let errors = error.response.data.data.errors;
-        let { message } = errors[0];
-        toast.error(message);
+        let { data, message } = error.response.data;
+
+        let errorMessage = message;
+
+        if (data) {
+          let { errors } = data;
+          errorMessage = errors[0].message;
+        }
+
+        toast.error(errorMessage);
       })
       .finally(() => {
         hideLoading();
