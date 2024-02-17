@@ -5,6 +5,7 @@ import Store from "./store/index.js";
 import { Provider } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./assets/css/global.css";
 
