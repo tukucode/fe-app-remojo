@@ -129,3 +129,13 @@ html {
   font-weight: 600;
   text-decoration: none;
 }
+
+/* FOOTER */
+footer#footer--rental--mobil {
+  height: 100px;
+  background: #202429;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
