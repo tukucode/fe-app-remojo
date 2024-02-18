@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink, Outlet, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Footer from "../components/Footer";
 
@@ -12,6 +12,19 @@ export default function LayoutDashboard() {
   }
 
   let cssShowMenu = show ? "d-block" : "d-none";
+
+  const dispatch = useDispatch();
+  const navigateTo = useNavigate();
+  function onLogout() {
+    // REMOVE TOKEN AT LOCAL STORAGE
+    localStorage.removeItem("token");
+
+    // REASSIGN TOKEN AT REDUCER USER
+    dispatch({ type: "SET_TOKEN", value: null });
+
+    // NAGITATION TO PAGE LOGIN
+    navigateTo("/admin/login");
+  }
 
   const { token } = useSelector((store) => store.user);
   if (!token) return <Navigate to="/admin/login" replace />;
@@ -64,7 +77,11 @@ export default function LayoutDashboard() {
               </NavLink>
             </Nav>
 
-            <Button variant="outline-danger" className="rounded-0 my-md-0 my-2">
+            <Button
+              variant="outline-danger"
+              className="rounded-0 my-md-0 my-2"
+              onClick={onLogout}
+            >
               Keluar
             </Button>
           </Navbar.Collapse>
