@@ -1,6 +1,6 @@
 import FormAuth from "../../components/FormAuth";
 import useLoading from "../../hooks/useLoading";
-import axios from "axios";
+import useAxios from "../../hooks/useAxios";
 import * as Yup from "yup";
 
 import { useFormik } from "formik";
@@ -37,12 +37,12 @@ export default function AdminLogin() {
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
+  const axios = useAxios();
   function onSubmitForm(values) {
-    let url = `${import.meta.env.VITE_BASE_API_URL}/api/v1/user/login`;
     showLoading();
 
     axios
-      .post(url, values)
+      .post("api/v1/user/login", values)
       .then((response) => {
         let { token } = response.data.data;
 
