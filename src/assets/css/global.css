@@ -110,6 +110,15 @@ html {
   font-weight: 400;
 }
 
+/* PADDING AND MARGIN */
+.p-16 {
+  padding: 1rem;
+}
+
+.m-16 {
+  margin: 1rem;
+}
+
 /* COLORING NAVIGATION */
 .inactive {
   color: #202429;
