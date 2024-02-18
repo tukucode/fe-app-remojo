@@ -1,0 +1,22 @@
+nav#nav--breadcrumb.custom--breadcrumb {
+  background-color: #fafafa !important;
+  padding: 12px;
+}
+
+nav#nav--breadcrumb.custom--breadcrumb ol.breadcrumb {
+  margin: 0;
+}
+
+nav#nav--breadcrumb.custom--breadcrumb ol.breadcrumb li.breadcrumb-item a {
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none !important;
+  color: #202429;
+}
+
+nav#nav--breadcrumb.custom--breadcrumb ol.breadcrumb li.breadcrumb-item.active {
+  color: #acb5bd !important;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 2px;
+}
