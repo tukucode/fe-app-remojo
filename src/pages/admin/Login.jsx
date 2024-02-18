@@ -55,18 +55,6 @@ export default function AdminLogin() {
         toast.success("Login success");
         navigateTo("/admin/data-mobil");
       })
-      .catch((error) => {
-        let { data, message } = error.response.data;
-
-        let errorMessage = message;
-
-        if (data) {
-          let { errors } = data;
-          errorMessage = errors[0].message;
-        }
-
-        toast.error(errorMessage);
-      })
       .finally(() => {
         hideLoading();
       });
