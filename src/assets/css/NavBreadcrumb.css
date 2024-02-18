@@ -1,6 +1,7 @@
 nav#nav--breadcrumb.custom--breadcrumb {
   background-color: #fafafa !important;
-  padding: 12px;
+  padding: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 nav#nav--breadcrumb.custom--breadcrumb ol.breadcrumb {
