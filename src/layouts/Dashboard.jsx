@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 import Footer from "../components/Footer";
 
@@ -31,6 +32,8 @@ export default function LayoutDashboard() {
 
   return (
     <>
+      <ToastContainer position="top-right" />
+
       <Navbar
         variant="light"
         expand="md"
