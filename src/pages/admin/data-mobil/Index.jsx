@@ -27,13 +27,21 @@ export default function DataMobil() {
     q: "",
     sort_by: "",
     page: 1,
-    per_page: 1,
+    per_page: 20,
   });
 
   // SET INPUT PARAMS Q
   function onChangeParams(event) {
     let { name, value } = event.target;
-    setParams({ ...params, [name]: value, page: 1 });
+
+    if (value.length === 0) setLoad(true)
+
+    setParams({ ...params, [name]: value });
+  }
+
+  function onSearchData() {
+    setParams({ ...params, page: 1 });
+    setLoad(true);
   }
 
   const [totalPage, setTotalPage] = useState(0);
@@ -66,11 +74,6 @@ export default function DataMobil() {
 
   useEffect(() => {
     if (load) loadDataProduct();
-
-    // return () => {
-    //   setLoad(false)
-    //   setProducts([]);
-    // };
   }, [load]);
 
   return (
@@ -81,7 +84,7 @@ export default function DataMobil() {
         q={params.q}
         sort_by={params.sort_by}
         onChangeValue={onChangeParams}
-        onClickSearch={loadDataProduct}
+        onClickSearch={onSearchData}
         onCreateNew={() => navigateTo("/admin/data-mobil/buat-baru")}
       />
 
