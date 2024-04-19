@@ -4,13 +4,11 @@ import CardProduct from "../../CardProduct";
 
 // eslint-disable-next-line react/prop-types
 export default function ListProduct({ dataProduct = [] }) {
-
   function onEditProduct(detailProduct) {
-    console.log('ini ', detailProduct);
+    console.log("ini ", detailProduct);
   }
 
-
-  const divStyle = { marginTop: "2.875rem" };
+  const divStyle = { margin: "2.875rem 0" };
   if (!dataProduct.length) return <EmptyProduct />;
 
   return (
@@ -18,7 +16,10 @@ export default function ListProduct({ dataProduct = [] }) {
       <Row>
         {dataProduct.map((detailProduct, index) => (
           <Col key={`col-card-product-${index + 1}`} lg="3">
-            <CardProduct product={detailProduct} onClickBtn={() => onEditProduct(detailProduct)} />
+            <CardProduct
+              product={detailProduct}
+              onClickBtn={() => onEditProduct(detailProduct)}
+            />
           </Col>
         ))}
       </Row>
