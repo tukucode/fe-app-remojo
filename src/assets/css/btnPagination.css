@@ -1,0 +1,26 @@
+div.btn--pagination {
+  background-color: transparent;
+}
+
+div.btn--pagination ul.pagination {
+  margin: 0;
+  padding: 0;
+}
+
+div.btn--pagination ul.pagination > li.page-item > a.page-link {
+  color: #212529;
+  border: 1px solid #212529;
+  margin: 0 4px;
+  border-radius: 0;
+}
+
+div.btn--pagination ul.pagination > li.page-item.disabled > span.page-link {
+  margin: 0 4px;
+  border-radius: 0;
+}
+
+div.btn--pagination ul.pagination > li.page-item.active > span.page-link {
+  background-color: #212529;
+  border: 1px solid #212529;
+  margin: 0 2px;
+}
