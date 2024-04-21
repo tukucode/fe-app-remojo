@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 
@@ -34,9 +34,16 @@ export default function DataMobilForms(props) {
   });
 
   // ONCHANGE INPUT FILE
+  const [srcImage, setSrcImage] = useState(null)
   function handleChangeFile(event) {
     // ASSIGN VALUE TO INITIAL FORM IMAGE
-    Formik.values.image = event.target.files[0];
+    let file = event.target.files[0]
+    Formik.values.image = file;
+
+    // SET URL FILE TO STATE SRC IMAGE
+    setSrcImage(URL.createObjectURL(file))
+
+    // TOUCH FORM INPUT FILE IMAGE
     Formik.setFieldTouched("image", true);
   }
 
@@ -46,19 +53,31 @@ export default function DataMobilForms(props) {
     // reset input file
     refInputFile.current.value = null;
 
+    // reset state src image
+    setSrcImage(null)
+
     // reset formik
     Formik.resetForm({
       values: initialForm,
       touched: {},
     });
   }
+
+  const styleImg = {
+    height: '306px',
+    width: '100%',
+    objectFit: "contain",
+    objectPosition: "center",
+    border: '1px solid #ccc'
+  };
+
   return (
     <Row>
       <Col md="3" sm="12">
         <img
-          src="/images/placeholder.png"
+          src={srcImage ? srcImage : '/images/placeholder.png'}
           alt="product image"
-          className="w-100"
+          style={styleImg}
         />
       </Col>
 
