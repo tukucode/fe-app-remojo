@@ -29,11 +29,6 @@ export default function useAxios() {
     (error) => {
       const code = error.response.status;
 
-      if (code === 400) {
-        let { message } = error.response.data;
-        toast.error(message);
-      }
-
       if (code === 401) {
         let { message } = error.response.data;
         toast.error(message);
