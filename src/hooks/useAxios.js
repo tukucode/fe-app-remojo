@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function useAxios() {
   const { token } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const navigateTo = useNavigate();
 
   const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_API_URL,
@@ -46,6 +48,10 @@ export default function useAxios() {
 
         // HARD RELOAD TO PAGE LOGIN
         window.location.href = "/admin/login";
+      }
+
+      if (code === 404) {
+        navigateTo("/404");
       }
 
       return Promise.reject(error);

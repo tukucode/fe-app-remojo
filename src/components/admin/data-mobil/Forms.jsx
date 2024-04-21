@@ -1,12 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
 
 export default function DataMobilForms(props) {
-  const { onSubmitForm } = props;
+  const {
+    isEdit = false,
+    dataProduct = null,
+    onSubmitForm = () => { },
+    children,
+  } = props;
 
   const schema = Yup.object({
     name: Yup.string()
@@ -17,7 +23,7 @@ export default function DataMobilForms(props) {
       .required("Description is required")
       .min(10, "Description must have at least 10 letters")
       .max(350, "Description must not exceed 350 characters"),
-    image: Yup.mixed().required("Image is required"),
+    image: isEdit ? null : Yup.mixed().required("Image is required"),
   });
 
   const initialForm = {
@@ -34,14 +40,14 @@ export default function DataMobilForms(props) {
   });
 
   // ONCHANGE INPUT FILE
-  const [srcImage, setSrcImage] = useState(null)
+  const [srcImage, setSrcImage] = useState(null);
   function handleChangeFile(event) {
     // ASSIGN VALUE TO INITIAL FORM IMAGE
-    let file = event.target.files[0]
+    let file = event.target.files[0];
     Formik.values.image = file;
 
     // SET URL FILE TO STATE SRC IMAGE
-    setSrcImage(URL.createObjectURL(file))
+    setSrcImage(URL.createObjectURL(file));
 
     // TOUCH FORM INPUT FILE IMAGE
     Formik.setFieldTouched("image", true);
@@ -53,29 +59,50 @@ export default function DataMobilForms(props) {
     // reset input file
     refInputFile.current.value = null;
 
+    // just in case form edit
+    let urlImage = isEdit && dataProduct ? dataProduct.detail_storage.secure_url : null
+
     // reset state src image
-    setSrcImage(null)
+    setSrcImage(urlImage);
 
     // reset formik
     Formik.resetForm({
       values: initialForm,
       touched: {},
     });
+
+    if (urlImage) window.location.reload()
   }
 
   const styleImg = {
-    height: '306px',
-    width: '100%',
+    height: "306px",
+    width: "100%",
     objectFit: "contain",
     objectPosition: "center",
-    border: '1px solid #ccc'
+    border: "1px solid #ccc",
   };
+
+  const disableSubmitBtn =
+    isEdit && dataProduct ? dataProduct.deleted_at : false;
+  const labelBtn = isEdit ? "Perbaharui data" : "Buat data baru";
+
+  useEffect(() => {
+    if (isEdit && dataProduct) {
+      // REASSIGN DATA PRODUCT TO INITIAL FORM FORMIK
+      Formik.values.name = dataProduct.name;
+      Formik.values.price = dataProduct.price;
+      Formik.values.description = dataProduct.description;
+
+      // set IMAGE URL TO SRC IMAGE
+      setSrcImage(dataProduct.detail_storage.secure_url);
+    }
+  }, [isEdit, dataProduct]);
 
   return (
     <Row>
       <Col md="3" sm="12">
         <img
-          src={srcImage ? srcImage : '/images/placeholder.png'}
+          src={srcImage ? srcImage : "/images/placeholder.png"}
           alt="product image"
           style={styleImg}
         />
@@ -158,8 +185,15 @@ export default function DataMobilForms(props) {
             Reset
           </Button>
 
-          <Button type="submit" variant="success" className="rounded-0 mx-2">
-            Buat data baru
+          {children}
+
+          <Button
+            disabled={disableSubmitBtn}
+            type="submit"
+            variant="success"
+            className="rounded-0 mx-2"
+          >
+            {labelBtn}
           </Button>
         </Form>
       </Col>
