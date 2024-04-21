@@ -25,9 +25,9 @@ export default function DataMobilFilter(props) {
               onChange={(e) => onChangeValue(e)}
               className="rounded-0 bg-light"
             >
-              <option>Urutkan data</option>
-              <option value="asc">Data baru</option>
-              <option value="desc">Data lama</option>
+              <option value="">Urutkan data</option>
+              <option value="asc">Data lama</option>
+              <option value="desc">Data baru</option>
             </Form.Select>
           </Col>
 
