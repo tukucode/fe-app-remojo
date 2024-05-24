@@ -9,7 +9,7 @@ export default function DataTransaksiFilter(props) {
     <Card className="rounded-0 shadow-sm">
       <Card.Body>
         <Row>
-          <Col lg="6" md="6" sm="12">
+          <Col xl="6" lg="5" md="12" sm="12">
             <Form.Control
               name="q"
               value={q}
@@ -19,7 +19,7 @@ export default function DataTransaksiFilter(props) {
             />
           </Col>
 
-          <Col lg="2" md="3" sm="4" className="mt-md-0 mt-3">
+          <Col xl="2" lg="2" md="4" sm="4" className="mt-lg-0 mt-3">
             <InputDate
               name="start_date"
               placeholder="Tanggal mulai sewa"
@@ -28,7 +28,7 @@ export default function DataTransaksiFilter(props) {
             />
           </Col>
 
-          <Col lg="2" md="3" sm="4" className="mt-md-0 mt-3">
+          <Col xl="2" lg="2" md="4" sm="4" className="mt-lg-0 mt-3">
             <InputDate
               name="end_date"
               placeholder="Tanggal selesai sewa"
@@ -37,7 +37,7 @@ export default function DataTransaksiFilter(props) {
             />
           </Col>
 
-          <Col lg="2" md="3" sm="4" className="mt-md-0 mt-3">
+          <Col xl="2" lg="3" md="4" sm="4" className="mt-lg-0 mt-3">
             <Button
               variant="dark"
               className="rounded-0 w-100"
