@@ -24,6 +24,7 @@ export default function CardProduct(props) {
           src={product.detail_storage.secure_url}
           className="rounded-0"
           style={styleImg}
+          loading="lazy"
         />
       </div>
     );
@@ -34,6 +35,7 @@ export default function CardProduct(props) {
         src={product.detail_storage.secure_url}
         className="rounded-0"
         style={styleImg}
+        loading="lazy"
       />
     );
   }
