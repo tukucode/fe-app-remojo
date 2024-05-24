@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
@@ -29,6 +29,11 @@ export default function LayoutDashboard() {
     // NAGITATION TO PAGE LOGIN
     navigateTo("/admin/login");
   }
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const { isLoading } = useLoading();
   let componentLoading;
