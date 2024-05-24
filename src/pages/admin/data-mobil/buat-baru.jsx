@@ -60,7 +60,7 @@ export default function BuatBaru() {
   }
 
   return (
-    <section id="buat--baru">
+    <section id="buat--baru" className="min-vh-100">
       <NavBreadcrumb navList={navList} />
 
       <DataMobilForms onSubmitForm={handleSubmitForm} />

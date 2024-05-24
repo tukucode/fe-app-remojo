@@ -150,9 +150,7 @@ export default function DataMobilEdit() {
   }
 
   return (
-    <section id="edit--product">
-      <NavBreadcrumb navList={navList} />
-
+    <section id="edit--product" className="min-vh-100">
       <Dialog
         isShow={isShow}
         isLoading={isLoading}
@@ -168,6 +166,8 @@ export default function DataMobilEdit() {
             : "Selamat kendaraan anda dapat dirental kembali."}
         </p>
       </Dialog>
+
+      <NavBreadcrumb navList={navList} />
 
       <DataMobilForms isEdit dataProduct={data} onSubmitForm={handleUpdateForm}>
         <Button
