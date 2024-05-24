@@ -9,6 +9,7 @@ import useAxios from "../../../hooks/useAxios";
 
 import NavBreadcrumb from "../../../components/NavBreadcrumb";
 import DataMobilForms from "../../../components/admin/data-mobil/Forms";
+import Dialog from "../../../components/Dialog";
 
 export default function DataMobilEdit() {
   const { product_id } = useParams();
@@ -32,7 +33,8 @@ export default function DataMobilEdit() {
   ];
 
   const axios = useAxios();
-  const { showLoading, hideLoading } = useLoading();
+  const [isShow, setIsShow] = useState(false);
+  const { showLoading, hideLoading, isLoading } = useLoading();
   const [data, setData] = useState(null);
 
   // HANDLE REMOVE PRODUCT
@@ -42,6 +44,7 @@ export default function DataMobilEdit() {
     axios
       .delete(`api/v1/product/remove/${product_id}`)
       .then(() => {
+        setIsShow(false);
         window.location.reload();
       })
       .catch((error) => {
@@ -60,6 +63,7 @@ export default function DataMobilEdit() {
     axios
       .patch(`api/v1/product/restore/${product_id}`)
       .then(() => {
+        setIsShow(false);
         window.location.reload();
       })
       .catch((error) => {
@@ -149,12 +153,28 @@ export default function DataMobilEdit() {
     <section id="edit--product">
       <NavBreadcrumb navList={navList} />
 
+      <Dialog
+        isShow={isShow}
+        isLoading={isLoading}
+        labelCancel={!isMaintenance ? "Tidak" : "Belum, selesai"}
+        labelSave={!isMaintenance ? "Ya, Setuju" : "Ya"}
+        onCancel={() => setIsShow(false)}
+        onSave={switchMaintenance}
+      >
+        <h4>{!isMaintenance ? "Perbaikan" : "Selesai Perbaikan"}</h4>
+        <p className="mb-4">
+          {!isMaintenance
+            ? "Setujui untuk memperbaiki kendaraan ini?"
+            : "Selamat kendaraan anda dapat dirental kembali."}
+        </p>
+      </Dialog>
+
       <DataMobilForms isEdit dataProduct={data} onSubmitForm={handleUpdateForm}>
         <Button
           type="button"
           variant={variantBtn}
           className="rounded-0 ms-2"
-          onClick={switchMaintenance}
+          onClick={() => setIsShow(true)}
         >
           {labelBtn}
         </Button>
