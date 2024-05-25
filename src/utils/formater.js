@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const formatIDR = (amount) => {
   if (!["number", "string"].includes(typeof amount)) return 0;
 
@@ -8,4 +10,10 @@ export const formatIDR = (amount) => {
   }).format(amount);
 
   return result.replace("Rp", "IDR");
+};
+
+export const formatDate = (date) => {
+  if (date == null) return "-";
+
+  return moment(date).format("DD MMMM YYYY");
 };
