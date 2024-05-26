@@ -15,7 +15,7 @@ export default function CardUser({ detail }) {
   let { _id, detail_storage, first_name, last_name, email, phone, deleted_at } =
     detail;
 
-  let src_img = detail_storage ? detail_storage : "/images/placeholder.png";
+  let secure_url = detail_storage ? detail_storage.secure_url : "/images/placeholder.png";
   let full_name = `${first_name} ${last_name}`;
   let status = deleted_at ? "Tidak aktif" : "Aktif";
 
@@ -30,7 +30,7 @@ export default function CardUser({ detail }) {
         <Row className="g-3">
           <Col lg="1" md="2" sm="3" xs="12">
             <Card.Img
-              src={src_img}
+              src={secure_url}
               className="rounded-0"
               style={styleImg}
               loading="lazy"
