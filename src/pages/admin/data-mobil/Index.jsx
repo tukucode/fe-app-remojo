@@ -20,8 +20,8 @@ let navList = [
 
 export default function DataMobil() {
   const navigateTo = useNavigate();
-  const { showLoading, hideLoading, } = useLoading();
-  const [load, setLoad] = useState(true)
+  const { showLoading, hideLoading } = useLoading();
+  const [load, setLoad] = useState(true);
 
   const [params, setParams] = useState({
     q: "",
@@ -34,9 +34,15 @@ export default function DataMobil() {
   function onChangeParams(event) {
     let { name, value } = event.target;
 
-    if (value.length === 0) setLoad(true)
-
     setParams({ ...params, [name]: value });
+
+    if (name === "q") {
+      if (value.length === 0) setLoad(true);
+
+      return;
+    }
+
+    setLoad(true);
   }
 
   function onSearchData() {
@@ -47,7 +53,7 @@ export default function DataMobil() {
   const [totalPage, setTotalPage] = useState(0);
   function onPagePagination(page) {
     setParams({ ...params, page });
-    setLoad(true)
+    setLoad(true);
   }
 
   const axios = useAxios();
@@ -68,7 +74,7 @@ export default function DataMobil() {
       })
       .finally(() => {
         hideLoading();
-        setLoad(false)
+        setLoad(false);
       });
   }
 
