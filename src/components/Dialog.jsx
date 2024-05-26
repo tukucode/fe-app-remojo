@@ -1,6 +1,7 @@
 import { Modal, Button, Spinner } from "react-bootstrap";
 export default function Dialog(props) {
   const {
+    alignText = 'text-center',
     isShow = false,
     isLoading = false,
     labelCancel = "Cancel",
@@ -12,7 +13,7 @@ export default function Dialog(props) {
 
   return (
     <Modal show={isShow} backdrop="static" keyboard={false} centered>
-      <Modal.Body className="text-center p-4">
+      <Modal.Body className={`p-4 ${alignText}`}>
         {children}
 
         <div className="d-flex justify-content-evenly align-items-center">
