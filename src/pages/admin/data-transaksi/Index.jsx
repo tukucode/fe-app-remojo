@@ -9,6 +9,8 @@ import DataTransaksiFilter from "../../../components/admin/data-transaksi/Filter
 import DataTransaksiList from "../../../components/admin/data-transaksi/List";
 import BtnPagination from "../../../components/BtnPagination";
 
+import moment from "moment";
+
 let navList = [
   {
     to: "/admin/data-transaksi",
@@ -19,12 +21,13 @@ let navList = [
 export default function DataTransaction() {
   const [load, setLoad] = useState(true);
   const { showLoading, hideLoading } = useLoading();
-  const toDay = new Date().toISOString().split("T")[0];
+  const startOfDate = moment().startOf('month').format('YYYY-MM-DD')
+  const endOfDate = moment().endOf('month').format('YYYY-MM-DD')
 
   const [params, setParams] = useState({
     q: "",
-    start_date: toDay,
-    end_date: toDay,
+    start_date: startOfDate,
+    end_date: endOfDate,
     page: 1,
     per_page: 20,
   });
