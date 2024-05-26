@@ -16,7 +16,9 @@ import DataMobilEdit from "./pages/admin/data-mobil/Edit";
 import DataTransaction from "./pages/admin/data-transaksi/Index";
 import DataTransaksiDetail from "./pages/admin/data-transaksi/Detail";
 
+// DATA PENGGUNA
 import DataPengguna from "./pages/admin/data-pengguna/Index";
+import DataPenggunaDetail from "./pages/admin/data-pengguna/Detail";
 
 // ====== PAGES CUSTOMER =========
 import Home from "./pages/Index";
@@ -41,8 +43,10 @@ export default function App() {
             <Route path="detail/:transaction_id" Component={DataTransaksiDetail} />
           </Route>
 
-
-          <Route path="data-pengguna" Component={DataPengguna} />
+          <Route path="data-pengguna">
+            <Route index Component={DataPengguna} />
+            <Route path="detail/:user_id" Component={DataPenggunaDetail} />
+          </Route>
         </Route>
 
         {/* LANDING */}
