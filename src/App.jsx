@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // LAYOUTS
 import LayoutDashboard from "./layouts/Dashboard";
@@ -20,6 +20,9 @@ import DataPengguna from "./pages/admin/data-pengguna/Index";
 
 // ====== PAGES CUSTOMER =========
 import Home from "./pages/Index";
+
+// ====== NEGATIVE PAGE =========
+import Nofound from "./pages/Notfound";
 
 export default function App() {
   return (
@@ -50,8 +53,8 @@ export default function App() {
         {/* DEFAULT */}
         <Route Component={LayoutDefault}>
           <Route path="/admin/login" Component={AdminLogin} />
-
-          <Route path="/*" element={<h1>Page Not Found</h1>} />
+          <Route path="/*" element={<Navigate to="/404" replace />} />
+          <Route path="/404" Component={Nofound} />
         </Route>
       </Routes>
     </BrowserRouter>
