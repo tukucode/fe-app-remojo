@@ -104,7 +104,7 @@ export default function CardTransaction({ transaction, onRefresh = () => { } }) 
               <Button
                 variant="outline-dark"
                 className="rounded-0 me-2"
-                onClick={onRefresh}
+                onClick={() => onRefresh(transaction.order_id)}
               >
                 <i className="bi bi-arrow-clockwise"></i>
               </Button>

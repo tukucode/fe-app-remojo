@@ -17,8 +17,8 @@ let navList = [
   },
 ];
 export default function DataTransaction() {
-  const [load, setLoad] = useState(true)
-  const { showLoading, hideLoading, } = useLoading();
+  const [load, setLoad] = useState(true);
+  const { showLoading, hideLoading } = useLoading();
   const toDay = new Date().toISOString().split("T")[0];
 
   const [params, setParams] = useState({
@@ -33,7 +33,7 @@ export default function DataTransaction() {
   function onChangeParams(event) {
     let { name, value } = event.target;
 
-    if (name === 'q' && value.length === 0) setLoad(true);
+    if (name === "q" && value.length === 0) setLoad(true);
 
     setParams({ ...params, [name]: value });
   }
@@ -46,12 +46,30 @@ export default function DataTransaction() {
   const [totalPage, setTotalPage] = useState(0);
   function onPagePagination(page) {
     setParams({ ...params, page });
-    setLoad(true)
+    setLoad(true);
   }
-
 
   const axios = useAxios();
   const [transactions, setTransaction] = useState([]);
+
+  function handleCheckStatus(order_id) {
+    showLoading();
+
+    axios
+      .post(`api/v1/transaction/check-status/${order_id}`)
+      .then(() => {
+        // onReload
+        setLoad(true);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        let { message } = error.response.data;
+        toast.error(message);
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  }
 
   function loadDataProduct() {
     showLoading();
@@ -65,26 +83,26 @@ export default function DataTransaction() {
         const { total } = response.data.pagination;
         let resultTotalPage = Math.ceil(total / params.per_page);
         setTotalPage(resultTotalPage);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         let { message, data } = error.response.data;
 
         if (data.errors && data.errors.length) {
-
           let length = data.errors.length;
           let errors = data.errors;
 
           for (let i = 0; i <= length; i++) {
-            toast.error(`${errors[i]['path']} ${errors[i]['message']}`);
+            toast.error(`${errors[i]["path"]} ${errors[i]["message"]}`);
           }
 
-          return
+          return;
         }
 
         toast.error(message);
       })
       .finally(() => {
         hideLoading();
-        setLoad(false)
+        setLoad(false);
       });
   }
 
@@ -104,7 +122,10 @@ export default function DataTransaction() {
         onClickSearch={onSearchData}
       />
 
-      <DataTransaksiList dataTransaksi={transactions} onRefresh={() => { setLoad(true) }} />
+      <DataTransaksiList
+        dataTransaksi={transactions}
+        onRefresh={handleCheckStatus}
+      />
 
       <BtnPagination
         dataProduct={transactions}
