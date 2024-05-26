@@ -32,7 +32,7 @@ export default function Nofound() {
       <Button
         variant="dark"
         className="rounded-0"
-        onClick={() => navigateTo("/")}
+        onClick={() => navigateTo("/beranda")}
       >
         Ke halaman utama
       </Button>
