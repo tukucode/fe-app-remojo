@@ -33,9 +33,15 @@ export default function DataTransaction() {
   function onChangeParams(event) {
     let { name, value } = event.target;
 
-    if (name === "q" && value.length === 0) setLoad(true);
-
     setParams({ ...params, [name]: value });
+
+    if (name === "q") {
+      if (value.length === 0) setLoad(true)
+
+      return
+    }
+
+    setLoad(true)
   }
 
   function onSearchData() {
