@@ -12,7 +12,10 @@ import DataMobil from "./pages/admin/data-mobil/Index";
 import BuatBaru from "./pages/admin/data-mobil/buat-baru";
 import DataMobilEdit from "./pages/admin/data-mobil/Edit";
 
+// DATA TRANSAKSI
 import DataTransaction from "./pages/admin/data-transaksi/Index";
+import DataTransaksiDetail from "./pages/admin/data-transaksi/Detail";
+
 import DataPengguna from "./pages/admin/data-pengguna/Index";
 
 // ====== PAGES CUSTOMER =========
@@ -30,7 +33,12 @@ export default function App() {
             <Route path="edit/:product_id" Component={DataMobilEdit} />
           </Route>
 
-          <Route path="data-transaksi" Component={DataTransaction} />
+          <Route path="data-transaksi">
+            <Route index Component={DataTransaction} />
+            <Route path="detail/:transaction_id" Component={DataTransaksiDetail} />
+          </Route>
+
+
           <Route path="data-pengguna" Component={DataPengguna} />
         </Route>
 

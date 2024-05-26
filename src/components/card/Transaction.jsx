@@ -1,4 +1,5 @@
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import { formatDate } from "../../utils/formater";
 
@@ -33,6 +34,11 @@ export default function CardTransaction({ transaction, onRefresh = () => { } }) 
     } else {
       return "text-dark";
     }
+  }
+
+  const navigateTo = useNavigate();
+  function goToDetail(_id) {
+    navigateTo(`/admin/data-transaksi/detail/${_id}`)
   }
 
   return (
@@ -104,7 +110,7 @@ export default function CardTransaction({ transaction, onRefresh = () => { } }) 
               </Button>
             ) : null}
 
-            <Button variant="dark" className="rounded-0">
+            <Button variant="dark" className="rounded-0" onClick={() => { goToDetail(transaction._id) }}>
               Detail
             </Button>
           </Col>
