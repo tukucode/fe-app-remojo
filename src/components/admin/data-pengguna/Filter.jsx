@@ -8,7 +8,7 @@ export default function DataPenggunaFilter(props) {
     <Card className="rounded-0 shadow-sm">
       <Card.Body>
         <Row>
-          <Col lg="8" md="6" sm="8">
+          <Col xl="8" lg="6" md="9" sm="8">
             <Form.Control
               name="q"
               value={q}
@@ -18,7 +18,7 @@ export default function DataPenggunaFilter(props) {
             />
           </Col>
 
-          <Col lg="2" md="3" sm="4" className="mt-sm-0 mt-3">
+          <Col xl="2" lg="3" md="3" sm="4" className="mt-sm-0 mt-3">
             <Form.Select
               name="sort_by"
               value={sort_by}
@@ -31,7 +31,7 @@ export default function DataPenggunaFilter(props) {
             </Form.Select>
           </Col>
 
-          <Col lg="2" md="3" sm="12" className="mt-md-0 mt-3">
+          <Col xl="2" lg="3" md="12" sm="12" className="mt-lg-0 mt-3">
             <Button
               variant="outline-dark"
               className="rounded-0 w-100"
