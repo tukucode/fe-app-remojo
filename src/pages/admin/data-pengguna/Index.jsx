@@ -23,7 +23,7 @@ export default function DataPengguna() {
     q: "",
     sort_by: "",
     page: 1,
-    per_page: 1,
+    per_page: 20,
   });
 
   // SET INPUT PARAMS Q

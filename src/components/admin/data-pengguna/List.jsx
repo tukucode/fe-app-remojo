@@ -11,7 +11,7 @@ export default function ListDataPengguna({ dataUsers = [] }) {
     <div style={divStyle}>
       <Row className="g-3">
         {dataUsers.map((user, index) => (
-          <Col key={`col-card-user-${index + 1}`}>
+          <Col key={`col-card-user-${index + 1}`} xs="12">
             <CardUser detail={user} />
           </Col>
         ))}
