@@ -7,7 +7,7 @@ import useAxios from "../../../hooks/useAxios";
 
 import NavBreadcrumb from "../../../components/NavBreadcrumb";
 import DataMobilFilter from "../../../components/admin/data-mobil/Filter";
-import ListProduct from "../../../components/admin/data-mobil/ListProduct";
+import ListProduct from "../../../components/admin/data-mobil/List";
 import BtnPagination from "../../../components/BtnPagination";
 
 let navList = [

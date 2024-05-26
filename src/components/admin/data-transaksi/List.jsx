@@ -1,7 +1,7 @@
 import { Row, Col } from "react-bootstrap";
 
 import EmptyTransaction from "../../EmptyTransaction";
-import CardTransaction from "../../CardTransaction";
+import CardTransaction from "../../card/Transaction";
 
 export default function DataTransaksiList({ dataTransaksi = [] }) {
 

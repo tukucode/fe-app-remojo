@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Card, Button } from "react-bootstrap";
-import { formatIDR } from "../utils/formater.js";
+import { formatIDR } from "../../utils/formater.js";
 
 export default function CardProduct(props) {
   const { product = {}, titleBtn = "Edit", onClickBtn = () => { } } = props;

@@ -1,6 +1,6 @@
 import { Card, Button, Row, Col } from "react-bootstrap";
 
-import { formatDate } from "../utils/formater";
+import { formatDate } from "../../utils/formater";
 
 export default function CardTransaction({ transaction }) {
   const styleImg = {

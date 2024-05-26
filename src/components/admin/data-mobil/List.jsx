@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import EmptyProduct from "../../EmptyProduct";
-import CardProduct from "../../CardProduct";
+import CardProduct from "../../card/Product";
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
