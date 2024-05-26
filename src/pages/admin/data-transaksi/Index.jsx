@@ -104,7 +104,7 @@ export default function DataTransaction() {
         onClickSearch={onSearchData}
       />
 
-      <DataTransaksiList dataTransaksi={transactions} />
+      <DataTransaksiList dataTransaksi={transactions} onRefresh={() => { setLoad(true) }} />
 
       <BtnPagination
         dataProduct={transactions}

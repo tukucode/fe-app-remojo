@@ -2,7 +2,7 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 
 import { formatDate } from "../../utils/formater";
 
-export default function CardTransaction({ transaction }) {
+export default function CardTransaction({ transaction, onRefresh = () => { } }) {
   const styleImg = {
     aspectRatio: "1/1",
     objectFit: "contain",
@@ -33,10 +33,6 @@ export default function CardTransaction({ transaction }) {
     } else {
       return "text-dark";
     }
-  }
-
-  function onRefresh() {
-    window.location.reload();
   }
 
   return (
