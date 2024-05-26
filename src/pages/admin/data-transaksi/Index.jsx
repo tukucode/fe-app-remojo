@@ -87,12 +87,9 @@ export default function DataTransaction() {
       .catch((error) => {
         let { message, data } = error.response.data;
 
-        if (data.errors && data.errors.length) {
-          let length = data.errors.length;
-          let errors = data.errors;
-
-          for (let i = 0; i <= length; i++) {
-            toast.error(`${errors[i]["path"]} ${errors[i]["message"]}`);
+        if (data) {
+          for (let resError of data.errors) {
+            toast.error(`${resError.message} of ${resError.path}`);
           }
 
           return;
