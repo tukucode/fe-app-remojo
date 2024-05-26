@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink, Outlet, Navigate, useNavigate, useLocation } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
@@ -32,7 +38,13 @@ export default function LayoutDashboard() {
 
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (["/admin"].includes(pathname)) {
+      navigateTo('/admin/data-mobil')
+    }
+
+    return () => {
+      window.scrollTo(0, 0);
+    };
   }, [pathname]);
 
   const { isLoading } = useLoading();
