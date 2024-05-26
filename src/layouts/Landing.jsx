@@ -80,9 +80,7 @@ export default function LayoutLanding() {
         </Container>
       </Navbar>
 
-      <Container>
-        <Outlet key="layout-landing" />
-      </Container>
+      <Outlet key="layout-landing" />
 
       <Footer />
     </>
