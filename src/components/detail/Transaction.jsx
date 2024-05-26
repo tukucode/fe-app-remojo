@@ -60,7 +60,6 @@ export default function DetailTransaction({ detail, onRefund = () => { } }) {
   }
 
   let [index, setIndex] = useState(0);
-  let [isShow, setIsShow] = useState(false);
 
   return (
     <Row className="g-md-5 g-1">
