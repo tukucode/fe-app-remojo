@@ -21,7 +21,7 @@ import DataPengguna from "./pages/admin/data-pengguna/Index";
 import DataPenggunaDetail from "./pages/admin/data-pengguna/Detail";
 
 // ====== PAGES CUSTOMER =========
-import Home from "./pages/Index";
+import Beranda from "./pages/Beranda";
 
 // ====== NEGATIVE PAGE =========
 import Nofound from "./pages/Notfound";
@@ -51,7 +51,7 @@ export default function App() {
 
         {/* LANDING */}
         <Route Component={LayoutLanding}>
-          <Route index path="/" Component={Home} />
+          <Route index path="/beranda" Component={Beranda} />
         </Route>
 
         {/* DEFAULT */}
