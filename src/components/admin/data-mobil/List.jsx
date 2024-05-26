@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import EmptyProduct from "../../EmptyProduct";
+import EmptyProduct from "../../empty/Product";
 import CardProduct from "../../card/Product";
 import { useNavigate } from "react-router-dom";
 
