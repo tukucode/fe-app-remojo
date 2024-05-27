@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import CustomerBerandaHero from "../components/customer/beranda/Hero";
@@ -12,6 +12,11 @@ import useAxios from "../hooks/useAxios";
 import useLoading from "../hooks/useLoading";
 
 export default function Home() {
+  const styleImg = {
+    objectFit: "contain",
+    objectPosition: "bottom",
+  };
+
   const axios = useAxios();
   const { showLoading, hideLoading } = useLoading();
 
@@ -56,9 +61,14 @@ export default function Home() {
 
       <Container>
         <CustomerBerandaInfo />
-
         <CustomerBerandaCars cars={cars} />
       </Container>
+
+      <Image
+        src="./images/contact.png"
+        className="w-100 h-100"
+        style={styleImg}
+      />
     </section>
   );
 }
