@@ -111,6 +111,17 @@ export default function CustomerLogin() {
           <Button type="submit" variant="dark" className="rounded-0 w-100">
             Masuk
           </Button>
+
+          <p className="text-center mt-3">
+            Belum punya akun? Silahkan daftar{" "}
+            <span
+              className="text-primary"
+              onClick={() => navigateTo("/register")}
+            >
+              disini
+            </span>
+            .
+          </p>
         </Form>
       </FormAuth>
     </main>
