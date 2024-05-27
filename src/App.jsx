@@ -8,6 +8,7 @@ import LayoutDefault from "./layouts/Default";
 // ====== PAGES AUTHENTICATION =========
 import AdminLogin from "./pages/admin/Login";
 import CustomerLogin from "./pages/Login";
+import CustomerRegister from "./pages/admin/Register";
 
 // DATA MOBIL
 import DataMobil from "./pages/admin/data-mobil/Index";
@@ -73,6 +74,7 @@ export default function App() {
         <Route Component={LayoutDefault}>
           <Route path="/admin/login" Component={AdminLogin} />
           <Route path="/login" Component={CustomerLogin} />
+          <Route path="/register" Component={CustomerRegister} />
 
           <Route path="/*" element={<Navigate to="/404" replace />} />
           <Route path="/404" Component={Nofound} />
