@@ -39,7 +39,7 @@ export default function LayoutDashboard() {
   const { pathname } = useLocation();
   useEffect(() => {
     if (["/admin"].includes(pathname)) {
-      navigateTo('/admin/data-mobil')
+      navigateTo("/admin/data-mobil");
     }
 
     return () => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Navbar, Button, Nav } from "react-bootstrap";
-import { Outlet, useLocation, NavLink } from "react-router-dom";
+import { Outlet, useLocation, NavLink, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 import useLoading from "../hooks/useLoading";
@@ -25,6 +26,11 @@ export default function LayoutLanding() {
   const { isLoading } = useLoading();
   let componentLoading;
   if (isLoading) componentLoading = <Loading />;
+
+  // CHECK TOKEN && CHECK PATH AS IS WITH CREDENTIAL
+  const { token } = useSelector((store) => store.user);
+  const isPath = !["/beranda", "/rental-mobil"].includes(pathname);
+  if (!token && isPath) return <Navigate to="/login" replace />;
 
   return (
     <>
@@ -69,7 +75,10 @@ export default function LayoutLanding() {
               </NavLink>
             </Nav>
 
-            <Button variant="outline-dark" className="rounded-0 my-md-0 my-2 me-3">
+            <Button
+              variant="outline-dark"
+              className="rounded-0 my-md-0 my-2 me-3"
+            >
               Daftar
             </Button>
 

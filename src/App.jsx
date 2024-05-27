@@ -5,8 +5,10 @@ import LayoutDashboard from "./layouts/Dashboard";
 import LayoutLanding from "./layouts/Landing";
 import LayoutDefault from "./layouts/Default";
 
-// ====== PAGES ADMIN =========
+// ====== PAGES AUTHENTICATION =========
 import AdminLogin from "./pages/admin/Login";
+import CustomerLogin from "./pages/Login";
+
 // DATA MOBIL
 import DataMobil from "./pages/admin/data-mobil/Index";
 import BuatBaru from "./pages/admin/data-mobil/buat-baru";
@@ -70,6 +72,8 @@ export default function App() {
         {/* DEFAULT */}
         <Route Component={LayoutDefault}>
           <Route path="/admin/login" Component={AdminLogin} />
+          <Route path="/login" Component={CustomerLogin} />
+
           <Route path="/*" element={<Navigate to="/404" replace />} />
           <Route path="/404" Component={Nofound} />
         </Route>
