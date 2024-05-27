@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useRef } from "react";
 import { Form } from "react-bootstrap";
 
@@ -5,10 +6,11 @@ export default function InputDate(props) {
   const {
     name = "start_date",
     placeholder = "Date",
+    minDate = null,
+    maxDate = null,
     valueInput = "",
-    onChangeDate = () => { },
+    onChangeDate = () => {},
   } = props;
-
 
   const inputRef = useRef(null);
   const [type, setType] = useState("text");
@@ -16,11 +18,11 @@ export default function InputDate(props) {
   function onChangeType(value) {
     setType(value);
 
-    if (value === 'date') {
+    if (value === "date") {
       const timeout = setTimeout(() => {
-        inputRef.current.showPicker()
+        inputRef.current.showPicker();
 
-        clearTimeout(timeout)
+        clearTimeout(timeout);
       }, 100);
     }
   }
@@ -30,19 +32,27 @@ export default function InputDate(props) {
     // remove focus
     inputRef.current.blur();
     // set type input to text
-    setType('text');
+    setType("text");
   }
 
   return (
     <Form.Control
-      readOnly={type !== 'date'}
+      readOnly={type !== "date"}
       ref={inputRef}
       type={type}
       name={name}
+      min={minDate}
+      max={maxDate}
       value={valueInput}
-      onChange={(e) => { onChangeValue(e) }}
-      onFocus={() => { onChangeType('date') }}
-      onBlur={() => { onChangeType('text') }}
+      onChange={(e) => {
+        onChangeValue(e);
+      }}
+      onFocus={() => {
+        onChangeType("date");
+      }}
+      onBlur={() => {
+        onChangeType("text");
+      }}
       placeholder={placeholder}
       className="rounded-0 bg-light"
     />

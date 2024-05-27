@@ -26,6 +26,7 @@ export default function RentalMobil() {
   const { showLoading, hideLoading } = useLoading();
   const startOfDate = moment().startOf("month").format("YYYY-MM-DD");
   const endOfDate = moment().endOf("month").format("YYYY-MM-DD");
+  const toDay = moment().format("YYYY-MM-DD");
 
   const [params, setParams] = useState({
     q: "",
@@ -109,6 +110,7 @@ export default function RentalMobil() {
           q={params.q}
           start_date={params.start_date}
           end_date={params.end_date}
+          minDate={toDay}
           placeHolder="Toyota avanza"
           labelBtn="Cari mobil"
           onChangeValue={onChangeParams}

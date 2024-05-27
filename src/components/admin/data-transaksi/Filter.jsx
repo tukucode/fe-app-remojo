@@ -8,6 +8,8 @@ export default function DataTransaksiFilter(props) {
     q,
     start_date,
     end_date,
+    minDate = null,
+    maxDate = null,
     placeHolder = "Transaksi ID atau Order ID",
     labelBtn = "Cari Pesanan",
     onChangeValue,
@@ -32,6 +34,8 @@ export default function DataTransaksiFilter(props) {
             <InputDate
               name="start_date"
               placeholder="Tanggal mulai sewa"
+              minDate={minDate}
+              maxDate={maxDate}
               valueInput={start_date}
               onChangeDate={(e) => {
                 onChangeValue(e);
@@ -43,6 +47,8 @@ export default function DataTransaksiFilter(props) {
             <InputDate
               name="end_date"
               placeholder="Tanggal selesai sewa"
+              minDate={minDate}
+              maxDate={maxDate}
               valueInput={end_date}
               onChangeDate={(e) => {
                 onChangeValue(e);
