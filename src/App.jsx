@@ -22,6 +22,7 @@ import DataPenggunaDetail from "./pages/admin/data-pengguna/Detail";
 
 // ====== PAGES CUSTOMER =========
 import Beranda from "./pages/Beranda";
+import RentalMobil from "./pages/rental-mobil/Index";
 
 // ====== NEGATIVE PAGE =========
 import Nofound from "./pages/Notfound";
@@ -40,7 +41,10 @@ export default function App() {
 
           <Route path="data-transaksi">
             <Route index Component={DataTransaction} />
-            <Route path="detail/:transaction_id" Component={DataTransaksiDetail} />
+            <Route
+              path="detail/:transaction_id"
+              Component={DataTransaksiDetail}
+            />
           </Route>
 
           <Route path="data-pengguna">
@@ -52,6 +56,10 @@ export default function App() {
         {/* LANDING */}
         <Route Component={LayoutLanding}>
           <Route index path="/beranda" Component={Beranda} />
+
+          <Route path="rental-mobil">
+            <Route index Component={RentalMobil} />
+          </Route>
         </Route>
 
         {/* DEFAULT */}
