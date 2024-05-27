@@ -1,9 +1,18 @@
+/* eslint-disable react/prop-types */
 import { Card, Row, Col, Form, Button } from "react-bootstrap";
 
 import InputDate from "../../InputDate";
 
 export default function DataTransaksiFilter(props) {
-  let { q, start_date, end_date, onChangeValue, onClickSearch } = props;
+  let {
+    q,
+    start_date,
+    end_date,
+    placeHolder = "Transaksi ID atau Order ID",
+    labelBtn = "Cari Pesanan",
+    onChangeValue,
+    onClickSearch,
+  } = props;
 
   return (
     <Card className="rounded-0 shadow-sm">
@@ -14,7 +23,7 @@ export default function DataTransaksiFilter(props) {
               name="q"
               value={q}
               onChange={(e) => onChangeValue(e)}
-              placeholder="Transaksi ID atau Order ID"
+              placeholder={placeHolder}
               className="rounded-0 bg-light"
             />
           </Col>
@@ -24,7 +33,9 @@ export default function DataTransaksiFilter(props) {
               name="start_date"
               placeholder="Tanggal mulai sewa"
               valueInput={start_date}
-              onChangeDate={(e) => { onChangeValue(e) }}
+              onChangeDate={(e) => {
+                onChangeValue(e);
+              }}
             />
           </Col>
 
@@ -33,7 +44,9 @@ export default function DataTransaksiFilter(props) {
               name="end_date"
               placeholder="Tanggal selesai sewa"
               valueInput={end_date}
-              onChangeDate={(e) => { onChangeValue(e) }}
+              onChangeDate={(e) => {
+                onChangeValue(e);
+              }}
             />
           </Col>
 
@@ -43,11 +56,11 @@ export default function DataTransaksiFilter(props) {
               className="rounded-0 w-100"
               onClick={onClickSearch}
             >
-              <i className="bi bi-search"></i> Cari Pesanan
+              <i className="bi bi-search"></i> {labelBtn}
             </Button>
           </Col>
         </Row>
       </Card.Body>
     </Card>
-  )
+  );
 }
