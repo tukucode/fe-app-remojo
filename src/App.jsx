@@ -23,6 +23,7 @@ import DataPenggunaDetail from "./pages/admin/data-pengguna/Detail";
 // ====== PAGES CUSTOMER =========
 import Beranda from "./pages/Beranda";
 import RentalMobil from "./pages/rental-mobil/Index";
+import RentalMobilCheckout from "./pages/rental-mobil/Checkout";
 
 // ====== NEGATIVE PAGE =========
 import Nofound from "./pages/Notfound";
@@ -59,6 +60,10 @@ export default function App() {
 
           <Route path="rental-mobil">
             <Route index Component={RentalMobil} />
+            <Route
+              path="checkout/:product_id"
+              Component={RentalMobilCheckout}
+            />
           </Route>
         </Route>
 
