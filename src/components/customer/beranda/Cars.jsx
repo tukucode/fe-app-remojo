@@ -13,13 +13,7 @@ export default function CustomerBerandaCars({ cars = [] }) {
 
   let element;
   if (!cars.length) {
-    element = (
-      <div className="text-center mb-5">
-        <EmptyProduct />
-        <h4>Mohon maaf,</h4>
-        <h6>Saat ini kendaraan tidak tersedia.</h6>
-      </div>
-    );
+    element = <EmptyProduct />;
   } else {
     element = (
       <>
