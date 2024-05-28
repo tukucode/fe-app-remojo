@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import { Row, Col } from "react-bootstrap";
 
 import EmptyTransaction from "../../empty/Transaction";
 import CardTransaction from "../../card/Transaction";
 
-export default function DataTransaksiList({ dataTransaksi = [], onRefresh = () => { } }) {
-
+export default function DataTransaksiList({
+  dataTransaksi = [],
+  onRefresh = () => {},
+}) {
   const divStyle = { margin: "2.875rem 0" };
   if (!dataTransaksi.length) return <EmptyTransaction />;
 
@@ -21,5 +24,5 @@ export default function DataTransaksiList({ dataTransaksi = [], onRefresh = () =
         ))}
       </Row>
     </div>
-  )
+  );
 }

@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import { Modal, Button, Spinner } from "react-bootstrap";
 export default function Dialog(props) {
   const {
-    alignText = 'text-center',
+    alignText = "text-center",
     isShow = false,
     isLoading = false,
     labelCancel = "Cancel",
     labelSave = "Yes",
-    onCancel = () => { },
-    onSave = () => { },
+    onCancel = () => {},
+    onSave = () => {},
     children,
   } = props;
 
