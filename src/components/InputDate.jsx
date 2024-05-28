@@ -9,7 +9,9 @@ export default function InputDate(props) {
     minDate = null,
     maxDate = null,
     valueInput = "",
+    isInvalid = null,
     onChangeDate = () => {},
+    children,
   } = props;
 
   const inputRef = useRef(null);
@@ -36,25 +38,29 @@ export default function InputDate(props) {
   }
 
   return (
-    <Form.Control
-      readOnly={type !== "date"}
-      ref={inputRef}
-      type={type}
-      name={name}
-      min={minDate}
-      max={maxDate}
-      value={valueInput}
-      onChange={(e) => {
-        onChangeValue(e);
-      }}
-      onFocus={() => {
-        onChangeType("date");
-      }}
-      onBlur={() => {
-        onChangeType("text");
-      }}
-      placeholder={placeholder}
-      className="rounded-0 bg-light"
-    />
+    <>
+      <Form.Control
+        readOnly={type !== "date"}
+        ref={inputRef}
+        type={type}
+        name={name}
+        min={minDate}
+        max={maxDate}
+        isInvalid={isInvalid}
+        value={valueInput}
+        onChange={(e) => {
+          onChangeValue(e);
+        }}
+        onFocus={() => {
+          onChangeType("date");
+        }}
+        onBlur={() => {
+          onChangeType("text");
+        }}
+        placeholder={placeholder}
+        className="rounded-0 bg-light"
+      />
+      {children}
+    </>
   );
 }
