@@ -39,7 +39,6 @@ export default function RentalMobilCheckout() {
     axios
       .post("api/v1/transaction/checkout", values)
       .then((response) => {
-        console.log("ini", response.data.data);
         let { token } = response.data.data;
 
         window.snap.pay(token, {
