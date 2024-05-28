@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -38,7 +39,9 @@ export default function DataTransaksiDetail() {
   const [isShow, setIsShow] = useState(false);
 
   const schema = Yup.object({
-    note_refund: Yup.string().required("Field is required").min(10, 'Input must be at least 10 characters'),
+    note_refund: Yup.string()
+      .required("Field is required")
+      .min(10, "Input must be at least 10 characters"),
   });
 
   const initialForm = {

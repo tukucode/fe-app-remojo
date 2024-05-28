@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Row, Col, Image, Button } from "react-bootstrap";
 
 import { formatIDR, formatDate } from "../../utils/formater";
 
-export default function DetailTransaction({ detail, onRefund = () => { } }) {
+export default function DetailTransaction({ detail, onRefund = () => {} }) {
   const styleImg = {
     aspectRatio: "1/1",
     objectFit: "contain",
@@ -40,8 +41,8 @@ export default function DetailTransaction({ detail, onRefund = () => { } }) {
       rental_duration.start_date
     )} s.d. ${formatDate(rental_duration.end_date)}`,
     status,
-    note_refund: note_refund ?? '-',
-    refund_date: refund_date ?? '-'
+    note_refund: note_refund ?? "-",
+    refund_date: refund_date ?? "-",
   };
 
   const objStatus = {
