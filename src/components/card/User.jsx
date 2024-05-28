@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -15,13 +16,15 @@ export default function CardUser({ detail }) {
   let { _id, detail_storage, first_name, last_name, email, phone, deleted_at } =
     detail;
 
-  let secure_url = detail_storage ? detail_storage.secure_url : "/images/placeholder.png";
+  let secure_url = detail_storage
+    ? detail_storage.secure_url
+    : "/images/placeholder.png";
   let full_name = `${first_name} ${last_name}`;
   let status = deleted_at ? "Tidak aktif" : "Aktif";
 
   const navigateTo = useNavigate();
   function goToDetail(_id) {
-    navigateTo(`/admin/data-pengguna/detail/${_id}`)
+    navigateTo(`/admin/data-pengguna/detail/${_id}`);
   }
 
   return (
@@ -69,8 +72,9 @@ export default function CardUser({ detail }) {
           >
             <Card.Title className="text-s4">Status</Card.Title>
             <Card.Text
-              className={`text-p4 ${deleted_at ? "text-danger" : "text-primary"
-                }`}
+              className={`text-p4 ${
+                deleted_at ? "text-danger" : "text-primary"
+              }`}
             >
               {status}
             </Card.Text>
@@ -83,7 +87,13 @@ export default function CardUser({ detail }) {
             xs="12"
             className="d-flex align-items-center justify-content-sm-end h-auto"
           >
-            <Button variant="dark" className="rounded-0" onClick={() => { goToDetail(_id) }}>
+            <Button
+              variant="dark"
+              className="rounded-0"
+              onClick={() => {
+                goToDetail(_id);
+              }}
+            >
               Detail
             </Button>
           </Col>

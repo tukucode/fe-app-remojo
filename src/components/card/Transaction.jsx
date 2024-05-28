@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { formatDate } from "../../utils/formater";
 
-export default function CardTransaction({ transaction, onRefresh = () => { } }) {
+export default function CardTransaction({ transaction, onRefresh = () => {} }) {
   const styleImg = {
     aspectRatio: "1/1",
     objectFit: "contain",
@@ -38,7 +39,7 @@ export default function CardTransaction({ transaction, onRefresh = () => { } }) 
 
   const navigateTo = useNavigate();
   function goToDetail(_id) {
-    navigateTo(`/admin/data-transaksi/detail/${_id}`)
+    navigateTo(`/admin/data-transaksi/detail/${_id}`);
   }
 
   return (
@@ -110,7 +111,13 @@ export default function CardTransaction({ transaction, onRefresh = () => { } }) 
               </Button>
             ) : null}
 
-            <Button variant="dark" className="rounded-0" onClick={() => { goToDetail(transaction._id) }}>
+            <Button
+              variant="dark"
+              className="rounded-0"
+              onClick={() => {
+                goToDetail(transaction._id);
+              }}
+            >
               Detail
             </Button>
           </Col>

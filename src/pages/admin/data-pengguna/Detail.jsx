@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import useAxios from "../../../hooks/useAxios";
 import useLoading from "../../../hooks/useLoading";
@@ -38,8 +40,8 @@ export default function DataPenggunaDetail() {
 
     if (status) {
       restoreUser(user_id);
-      return
-    };
+      return;
+    }
 
     removeUser(user_id);
   }

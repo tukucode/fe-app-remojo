@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -21,8 +22,8 @@ let navList = [
 export default function DataTransaction() {
   const [load, setLoad] = useState(true);
   const { showLoading, hideLoading } = useLoading();
-  const startOfDate = moment().startOf('month').format('YYYY-MM-DD')
-  const endOfDate = moment().endOf('month').format('YYYY-MM-DD')
+  const startOfDate = moment().startOf("month").format("YYYY-MM-DD");
+  const endOfDate = moment().endOf("month").format("YYYY-MM-DD");
 
   const [params, setParams] = useState({
     q: "",
@@ -39,12 +40,12 @@ export default function DataTransaction() {
     setParams({ ...params, [name]: value });
 
     if (name === "q") {
-      if (value.length === 0) setLoad(true)
+      if (value.length === 0) setLoad(true);
 
-      return
+      return;
     }
 
-    setLoad(true)
+    setLoad(true);
   }
 
   function onSearchData() {

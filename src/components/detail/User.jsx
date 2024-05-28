@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Row, Col, Image, Button } from "react-bootstrap";
 
-export default function DetailUser({ detail, onActivation = () => { } }) {
+export default function DetailUser({ detail, onActivation = () => {} }) {
   const styleImg = {
     aspectRatio: "1/1",
     objectFit: "contain",

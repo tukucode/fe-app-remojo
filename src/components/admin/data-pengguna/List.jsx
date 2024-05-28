@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Row, Col } from "react-bootstrap";
 import EmptyTransaction from "../../empty/Transaction";
 import CardUser from "../../card/User";
-
 
 export default function ListDataPengguna({ dataUsers = [] }) {
   const divStyle = { margin: "2.875rem 0" };
