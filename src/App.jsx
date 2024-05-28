@@ -27,6 +27,8 @@ import DataPenggunaDetail from "./pages/admin/data-pengguna/Detail";
 import Beranda from "./pages/Beranda";
 import RentalMobil from "./pages/rental-mobil/Index";
 import RentalMobilCheckout from "./pages/rental-mobil/Checkout";
+import DaftarSewa from "./pages/daftar-sewa/Index";
+import ProfileCustomer from "./pages/profile/Index";
 
 // ====== NEGATIVE PAGE =========
 import Nofound from "./pages/Notfound";
@@ -68,6 +70,9 @@ export default function App() {
               Component={RentalMobilCheckout}
             />
           </Route>
+
+          <Route path="/daftar-sewa" Component={DaftarSewa} />
+          <Route path="/profile" Component={ProfileCustomer} />
         </Route>
 
         {/* DEFAULT */}
