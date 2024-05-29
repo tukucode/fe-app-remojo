@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useFormik } from "formik";
 import { Row, Col, Image, Form, Button } from "react-bootstrap";
 
@@ -77,14 +77,12 @@ export default function FormProfile({ detail, onSubmitForm = () => {} }) {
     window.location.reload();
   }
 
-  useEffect(() => {
-    let { email, first_name, last_name, phone } = detail;
-    Formik.values.email = email;
-    Formik.values.first_name = first_name;
-    Formik.values.last_name = last_name;
-    Formik.values.phone = phone;
-    Formik.values.image = null;
-  }, []);
+  let { email, first_name, last_name, phone } = detail;
+  Formik.values.email = email;
+  Formik.values.first_name = first_name;
+  Formik.values.last_name = last_name;
+  Formik.values.phone = phone;
+  Formik.values.image = null;
 
   return (
     <Row className="g-md-5 g-sm-4 g-3">
