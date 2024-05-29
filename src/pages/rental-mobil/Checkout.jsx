@@ -43,14 +43,22 @@ export default function RentalMobilCheckout() {
 
         window.snap.pay(token, {
           onSuccess: function (result) {
-            toast.success(result);
-            navigateTo("/daftar-sewa");
+            toast.success("Success payment");
+
+            let { order_id } = result;
+            handleCheckStatus(order_id);
           },
           onPending: function (result) {
-            toast.info(result);
+            toast.info("Pending payment");
+
+            let { order_id } = result;
+            handleCheckStatus(order_id);
           },
           onError: function (result) {
-            toast.error(result);
+            toast.error("Error payment");
+
+            let { order_id } = result;
+            handleCheckStatus(order_id);
           },
           onClose: function () {
             // CLOSE POPUP
@@ -70,6 +78,23 @@ export default function RentalMobilCheckout() {
           return;
         }
 
+        toast.error(message);
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  }
+
+  function handleCheckStatus(order_id) {
+    showLoading();
+
+    axios
+      .post(`api/v1/transaction/check-status/${order_id}`)
+      .then(() => {
+        navigateTo("/daftar-sewa");
+      })
+      .catch((error) => {
+        let { message } = error.response.data;
         toast.error(message);
       })
       .finally(() => {
