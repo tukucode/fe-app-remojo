@@ -3,8 +3,15 @@ import { useState } from "react";
 import { Row, Col, Image, Button } from "react-bootstrap";
 
 import { formatIDR, formatDate } from "../../utils/formater";
+import moment from "moment";
 
-export default function DetailTransaction({ detail, onRefund = () => {} }) {
+export default function DetailTransaction({
+  detail,
+  isHidePersonalData = false,
+  isCustomer = false,
+  onRefund = () => {},
+  onContinuePayment = () => {},
+}) {
   const styleImg = {
     aspectRatio: "1/1",
     objectFit: "contain",
@@ -41,8 +48,10 @@ export default function DetailTransaction({ detail, onRefund = () => {} }) {
       rental_duration.start_date
     )} s.d. ${formatDate(rental_duration.end_date)}`,
     status,
-    note_refund: note_refund ?? "-",
-    refund_date: refund_date ?? "-",
+    ["Tanggal refund"]: refund_date
+      ? moment(refund_date).format("DD MMM YYYY HH:mm")
+      : "-",
+    ["Alasan refund"]: note_refund ?? "-",
   };
 
   const objStatus = {
@@ -108,13 +117,17 @@ export default function DetailTransaction({ detail, onRefund = () => {} }) {
 
         <h4 className="text-h4 mb-3">Detail Transaksi</h4>
 
-        <h5 className="text-s4">Data diri pemesan</h5>
+        {!isHidePersonalData ? (
+          <>
+            <h5 className="text-s4">Data diri pemesan</h5>
 
-        {Object.entries(data_diri).map(([key, value]) => (
-          <p className="text-p4 mb-2" key={`data_diri_${key}`}>
-            <span className="text-capitalize">{key}</span>: {value}
-          </p>
-        ))}
+            {Object.entries(data_diri).map(([key, value]) => (
+              <p className="text-p4 mb-2" key={`data_diri_${key}`}>
+                <span className="text-capitalize">{key}</span>: {value}
+              </p>
+            ))}
+          </>
+        ) : null}
 
         <h5 className="text-s4 mt-3">Data transaksi</h5>
 
@@ -125,13 +138,21 @@ export default function DetailTransaction({ detail, onRefund = () => {} }) {
           </p>
         ))}
 
-        {status === "success" ? (
+        {status === "success" && !isCustomer ? (
           <Button
             variant="danger"
             className="rounded-0 mt-3 w-25"
             onClick={onRefund}
           >
             Refund
+          </Button>
+        ) : status === "pending" && isCustomer ? (
+          <Button
+            variant="dark"
+            className="rounded-0 mt-3 w-25"
+            onClick={onContinuePayment}
+          >
+            Lanjutkan pembayaran
           </Button>
         ) : null}
       </Col>
