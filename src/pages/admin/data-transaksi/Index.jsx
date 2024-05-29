@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import useLoading from "../../../hooks/useLoading";
 import useAxios from "../../../hooks/useAxios";
@@ -24,6 +25,7 @@ export default function DataTransaction() {
   const { showLoading, hideLoading } = useLoading();
   const startOfDate = moment().startOf("month").format("YYYY-MM-DD");
   const endOfDate = moment().endOf("month").format("YYYY-MM-DD");
+  const navigateTo = useNavigate();
 
   const [params, setParams] = useState({
     q: "",
@@ -131,6 +133,9 @@ export default function DataTransaction() {
       <DataTransaksiList
         dataTransaksi={transactions}
         onRefresh={handleCheckStatus}
+        goToDetail={(id) => {
+          navigateTo(`/admin/data-transaksi/detail/${id}`);
+        }}
       />
 
       <BtnPagination

@@ -7,6 +7,7 @@ import CardTransaction from "../../card/Transaction";
 export default function DataTransaksiList({
   dataTransaksi = [],
   onRefresh = () => {},
+  goToDetail = () => {},
 }) {
   const divStyle = { margin: "2.875rem 0" };
   if (!dataTransaksi.length) return <EmptyTransaction />;
@@ -19,6 +20,7 @@ export default function DataTransaksiList({
             <CardTransaction
               transaction={detailTransaction}
               onRefresh={onRefresh}
+              goToDetail={() => goToDetail(detailTransaction._id)}
             />
           </Col>
         ))}
