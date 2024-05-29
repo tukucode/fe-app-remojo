@@ -28,6 +28,7 @@ import Beranda from "./pages/Beranda";
 import RentalMobil from "./pages/rental-mobil/Index";
 import RentalMobilCheckout from "./pages/rental-mobil/Checkout";
 import DaftarSewa from "./pages/daftar-sewa/Index";
+import DaftarSewaDetail from "./pages/daftar-sewa/Detail";
 import ProfileCustomer from "./pages/profile/Index";
 
 // ====== NEGATIVE PAGE =========
@@ -71,7 +72,11 @@ export default function App() {
             />
           </Route>
 
-          <Route path="/daftar-sewa" Component={DaftarSewa} />
+          <Route path="daftar-sewa">
+            <Route index Component={DaftarSewa} />
+            <Route path="detail/:transaction_id" Component={DaftarSewaDetail} />
+          </Route>
+
           <Route path="/profile" Component={ProfileCustomer} />
         </Route>
 
