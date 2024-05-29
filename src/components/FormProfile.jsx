@@ -39,11 +39,12 @@ export default function FormProfile({ detail, onSubmitForm = () => {} }) {
     // image: Yup.mixed().required("Image is required"),
   });
 
+  let { email, first_name, last_name, phone } = detail;
   const initialForm = {
-    email: "",
-    first_name: "",
-    last_name: "",
-    phone: "",
+    email: email || "",
+    first_name: first_name || "",
+    last_name: last_name || "",
+    phone: phone || "",
     image: null,
   };
 
@@ -76,13 +77,6 @@ export default function FormProfile({ detail, onSubmitForm = () => {} }) {
 
     window.location.reload();
   }
-
-  let { email, first_name, last_name, phone } = detail;
-  Formik.values.email = email;
-  Formik.values.first_name = first_name;
-  Formik.values.last_name = last_name;
-  Formik.values.phone = phone;
-  Formik.values.image = null;
 
   return (
     <Row className="g-md-5 g-sm-4 g-3">
