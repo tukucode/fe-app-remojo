@@ -72,7 +72,6 @@ export default function DataTransaction() {
         setLoad(true);
       })
       .catch((error) => {
-        console.log(error.response);
         let { message } = error.response.data;
         toast.error(message);
       })
