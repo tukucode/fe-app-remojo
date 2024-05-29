@@ -32,6 +32,7 @@ import DaftarSewaDetail from "./pages/daftar-sewa/Detail";
 import ProfileCustomer from "./pages/profile/Index";
 
 // ====== NEGATIVE PAGE =========
+import Forbidden from "./pages/Forbidden";
 import Nofound from "./pages/Notfound";
 
 export default function App() {
@@ -86,6 +87,7 @@ export default function App() {
           <Route path="/admin/login" Component={AdminLogin} />
           <Route path="/login" Component={CustomerLogin} />
           <Route path="/register" Component={CustomerRegister} />
+          <Route path="/403" Component={Forbidden} />
 
           <Route path="/*" element={<Navigate to="/404" replace />} />
           <Route path="/404" Component={Nofound} />

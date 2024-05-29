@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export default function useAxios() {
   const { token } = useSelector((store) => store.user);
-  const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
   const axiosInstance = axios.create({
@@ -40,14 +39,7 @@ export default function useAxios() {
         let { message } = error.response.data;
         toast.error(message);
 
-        // REMOVE TOKEN AT LOCAL STORAGE
-        localStorage.removeItem("token");
-
-        // REASSIGN TOKEN AT REDUCER USER
-        dispatch({ type: "SET_TOKEN", value: null });
-
-        // HARD RELOAD TO PAGE LOGIN
-        window.location.href = "/admin/login";
+        navigateTo("/403");
       }
 
       if (code === 404) {
