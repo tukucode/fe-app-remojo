@@ -77,6 +77,7 @@ export default function App() {
 
         {/* DEFAULT */}
         <Route Component={LayoutDefault}>
+          <Route index path="/" element={<Navigate to="/beranda" replace />} />
           <Route path="/admin/login" Component={AdminLogin} />
           <Route path="/login" Component={CustomerLogin} />
           <Route path="/register" Component={CustomerRegister} />
