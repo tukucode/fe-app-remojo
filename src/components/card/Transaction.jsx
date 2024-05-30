@@ -99,7 +99,7 @@ export default function CardTransaction({
             xs="12"
             className="d-flex align-items-center justify-content-end h-auto"
           >
-            {status === "pending" ? (
+            {status === "pending" && transaction.transaction_id ? (
               <Button
                 variant="outline-dark"
                 className="rounded-0 me-2"

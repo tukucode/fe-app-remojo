@@ -62,8 +62,7 @@ export default function RentalMobilCheckout() {
           },
           onClose: function () {
             // CLOSE POPUP
-            toast.info("You closed the popup without finishing the payment");
-            navigateTo("/daftar-sewa");
+            handleRemoveTransaaction(token);
           },
         });
       })
@@ -92,6 +91,23 @@ export default function RentalMobilCheckout() {
       .post(`api/v1/transaction/check-status/${order_id}`)
       .then(() => {
         navigateTo("/daftar-sewa");
+      })
+      .catch((error) => {
+        let { message } = error.response.data;
+        toast.error(message);
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  }
+
+  function handleRemoveTransaaction(token) {
+    showLoading();
+
+    axios
+      .delete(`api/v1/transaction/remove/${token}`)
+      .then(() => {
+        toast.info("You closed the popup without finishing the payment");
       })
       .catch((error) => {
         let { message } = error.response.data;
