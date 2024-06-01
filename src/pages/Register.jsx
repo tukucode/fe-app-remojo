@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 import * as Yup from "yup";
-import useLoading from "../../hooks/useLoading";
-import useAxios from "../../hooks/useAxios";
+import useLoading from "../hooks/useLoading";
+import useAxios from "../hooks/useAxios";
 
-import FormAuth from "../../components/FormAuth";
+import FormAuth from "../components/FormAuth";
 
 export default function CustomerRegister() {
   const navigateTo = useNavigate();

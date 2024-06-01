@@ -8,7 +8,7 @@ import LayoutDefault from "./layouts/Default";
 // ====== PAGES AUTHENTICATION =========
 import AdminLogin from "./pages/admin/Login";
 import CustomerLogin from "./pages/Login";
-import CustomerRegister from "./pages/admin/Register";
+import CustomerRegister from "./pages/Register";
 
 // DATA MOBIL
 import DataMobil from "./pages/admin/data-mobil/Index";
