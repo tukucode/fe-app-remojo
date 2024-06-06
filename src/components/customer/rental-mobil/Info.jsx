@@ -67,7 +67,7 @@ export default function RentalMobilInfo({ detail, onSubmitForm = () => {} }) {
       <Col lg="8" md="7" sm="12" xs="12" className="h-100">
         <h2 className="text-h2">{name}</h2>
 
-        <p className="text-p1">{formatIDR(price ?? 0)}</p>
+        <p className="text-p1">{formatIDR(price ?? 0)} perhari</p>
 
         <hr />
         <p className="text-p3">{description}</p>
